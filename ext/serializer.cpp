@@ -5,7 +5,6 @@
 #include <stdio.h>
 #include <thrift/protocol/TBinaryProtocol.h>
 #include <thrift/protocol/TCompactProtocol.h>
-#include <thrift/stdcxx.h>
 #include <vector>
 
 using namespace std;
@@ -89,7 +88,7 @@ void initialize_runtime_constants() {
 
 void serializer_init(void *serializer, int protocol, void *str_arg1,
                      uint32_t len) {
-  using ::apache::thrift::stdcxx::shared_ptr;
+  using std::shared_ptr;
   using ::apache::thrift::protocol::TProtocol;
   using ::apache::thrift::protocol::TBinaryProtocol;
   using ::apache::thrift::protocol::TCompactProtocol;
@@ -97,13 +96,13 @@ void serializer_init(void *serializer, int protocol, void *str_arg1,
   ThriftSerializer *ts = (ThriftSerializer *)(serializer);
   shared_ptr<TMemoryBuffer> strBuffer;
   if (str_arg1 != NULL) {
-    strBuffer = stdcxx::make_shared<TMemoryBuffer>(
+    strBuffer = std::make_shared<TMemoryBuffer>(
       (uint8_t *)str_arg1,
       len,
       TMemoryBuffer::TAKE_OWNERSHIP
     );
   } else {
-    strBuffer = stdcxx::make_shared<TMemoryBuffer>();
+    strBuffer = std::make_shared<TMemoryBuffer>();
   }
   Proto proto = static_cast<Proto>(protocol);
   if (proto == compact) {
