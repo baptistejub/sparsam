@@ -3,7 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = 'sparsam'
-  s.version     = '0.2.3'
+  s.version     = '0.2.8'
   s.authors     = ['Airbnb Thrift Developers']
   s.email       = ['foundation.performance-eng@airbnb.com']
   s.homepage    = 'http://thrift.apache.org'
@@ -12,10 +12,7 @@ Gem::Specification.new do |s|
   s.license = 'Apache 2.0'
   s.extensions = ['ext/extconf.rb']
 
-  s.has_rdoc      = true
-  s.rdoc_options  = %w(--line-numbers --inline-source --title Thrift --main README)
-
-  s.rubyforge_project = 'thrift'
+  s.rdoc_options = %w(--line-numbers --inline-source --title Thrift --main README)
 
   s.files = Dir.glob("{lib,spec,ext}/**/*.{c,h,rb,cpp}")
   s.test_files = Dir.glob("{test,spec,benchmark}/**/*")
